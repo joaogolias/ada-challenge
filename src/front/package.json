@@ -1,0 +1,12 @@
+{
+  "name": "ada-challenge-front",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "yarn eslint",
+      "yarn prettier:write"
+    ]
+  }
+}

@@ -1,2 +1,11 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
+
+ls
+cd src/back
+npx lint-staged
+
+ls
+cd ../front
+ls
+npx lint-staged

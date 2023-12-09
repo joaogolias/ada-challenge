@@ -11,11 +11,5 @@
   },
   "scripts": {
     "prepare": "husky install"
-  },
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "yarn eslint",
-      "yarn prettier:write"
-    ]
   }
 }
