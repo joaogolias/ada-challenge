@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:joaogolias/ada-challenge.git",
-  "author": "João Victor Golias <joao.golias@orbia.ag>",
+  "author": "João Victor Golias <joaovgolias@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.13.2",

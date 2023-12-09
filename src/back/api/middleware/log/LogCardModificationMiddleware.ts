@@ -1,7 +1,6 @@
 import { RequestHandler } from 'express';
 import { Service } from 'typedi';
 import { getContainer } from '../../../container';
-import { ValidateTokenService } from '../../../core/auth/ValidateTokenService';
 import { StatusCode } from '../../statusCode';
 import { plainToInstance } from 'class-transformer';
 import { Card } from '../../../core/models/Card';
@@ -11,10 +10,9 @@ const modifyTypeMapper = [
   { method: 'put', type: 'Alterado' },
   { method: 'delete', type: 'Removido' },
 ];
+
 @Service()
 class LogCardModificationMiddleware {
-  constructor(private validateTokenService: ValidateTokenService) {}
-
   private toModel(input: any): Card {
     return plainToInstance(Card, input, { excludeExtraneousValues: true });
   }
