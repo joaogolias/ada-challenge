@@ -5,8 +5,8 @@
   "license": "MIT",
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "yarn eslint",
-      "yarn prettier:write"
+      "npx eslint",
+      "npx prettier --write ."
     ]
   }
 }
