@@ -13,6 +13,7 @@ class LoginController extends BaseController {
     }
 
     public handler: RequestHandler = (req, res) => {
+        console.log('validating lint')
         res.send(this.loginService.login(req.body))
     }
 }
