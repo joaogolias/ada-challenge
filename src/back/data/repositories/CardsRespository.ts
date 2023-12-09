@@ -10,4 +10,10 @@ export class CardsRespository implements CardsDatasource {
     await entity.save();
     return CardEntity.toModel(entity);
   }
+
+  public async list(): Promise<Card[]> {
+    const entities = await CardEntity.findAll();
+
+    return entities.map(CardEntity.toModel);
+  }
 }

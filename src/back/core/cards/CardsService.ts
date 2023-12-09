@@ -15,4 +15,8 @@ export class CardsService {
 
     return card;
   }
+
+  public async listCards() {
+    return this.cardDatasource.list();
+  }
 }

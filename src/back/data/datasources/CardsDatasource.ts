@@ -5,4 +5,5 @@ export const CardsDatasource = new Token('CardsDatasource');
 
 export interface CardsDatasource {
   create(card: Card): Promise<Card>;
+  list(): Promise<Card[]>;
 }
