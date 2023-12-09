@@ -16,4 +16,14 @@ export class CardsRespository implements CardsDatasource {
 
     return entities.map(CardEntity.toModel);
   }
+
+  public async findById(id: string): Promise<Card | undefined> {
+    const entity = await CardEntity.findByPk(id);
+    return entity ? CardEntity.toModel(entity) : undefined;
+  }
+
+  public async delete(id: string): Promise<void> {
+    const entity = await CardEntity.findByPk(id);
+    await entity?.destroy();
+  }
 }

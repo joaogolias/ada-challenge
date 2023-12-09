@@ -2,6 +2,7 @@ import { RequestHandler } from 'express';
 import { StatusCode } from '../statusCode';
 import { ValidationError } from '../../core/errors/ValidationError';
 import { InvalidAuthenticationError } from '../../core/errors/InvalidAuthenticationError';
+import { NotFoundError } from '../../core/errors/NotFoundError';
 
 export abstract class BaseController {
   public safelyHandle: RequestHandler = async (req, res, next) => {
@@ -18,6 +19,11 @@ export abstract class BaseController {
           error: InvalidAuthenticationError,
           code: StatusCode.UNAUTHORIZED,
           defaultMessage: 'Unauthorized',
+        },
+        {
+          error: NotFoundError,
+          code: StatusCode.NOT_FOUND,
+          defaultMessage: 'Not Found',
         },
       ];
 

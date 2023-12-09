@@ -2,6 +2,7 @@ import { Inject, Service } from 'typedi';
 import { Card } from '../models/Card';
 import { validateRequiredCardsProperties } from './validators/validateRequiredCardsProperties';
 import { CardsDatasource } from '../../data/datasources/CardsDatasource';
+import { NotFoundError } from '../errors/NotFoundError';
 
 @Service()
 export class CardsService {
@@ -18,5 +19,17 @@ export class CardsService {
 
   public async listCards() {
     return this.cardDatasource.list();
+  }
+
+  public async deleteCard(id: string) {
+    const card = await this.cardDatasource.findById(id);
+
+    if (!card) {
+      throw new NotFoundError();
+    }
+
+    await this.cardDatasource.delete(card.id!);
+
+    return this.listCards();
   }
 }
