@@ -33,9 +33,11 @@ class UpdateCardController extends BaseController {
 
     const card = this.toModel(requestBody);
 
-    const createdCard = await this.cardsService.updateCard(card);
+    const updatedCard = await this.cardsService.updateCard(card);
 
-    res.status(StatusCode.CREATED).send(createdCard);
+    res.locals.modifiedCard = updatedCard;
+
+    res.status(StatusCode.CREATED).send(updatedCard);
   };
 }
 

@@ -30,7 +30,12 @@ export class CardsService {
 
     await this.cardDatasource.delete(card.id!);
 
-    return this.listCards();
+    const allCards = await this.cardDatasource.list();
+
+    return {
+      deletedCard: card,
+      allCards,
+    };
   }
 
   public async updateCard(newCard: Card) {

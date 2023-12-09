@@ -35,6 +35,8 @@ export abstract class BaseController {
       }
 
       res.status(StatusCode.INTERNAL_ERROR).send(err.message);
+    } finally {
+      next();
     }
   };
 
