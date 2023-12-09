@@ -15,7 +15,6 @@ export class ValidateTokenService {
       return true;
     }
 
-    console.log(input.idToken);
     const result = verify(input.idToken ?? '', process.env.JWT_SECRET!);
     return !!result;
   }
