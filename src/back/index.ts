@@ -6,6 +6,7 @@ import { authRouter } from './api/controllers/auth/router';
 import { setupContainer } from './container';
 
 dotenv.config();
+
 setupContainer();
 
 const server = express();
