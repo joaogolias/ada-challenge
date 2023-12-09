@@ -19,8 +19,9 @@ class CreateCardController extends BaseController {
   private cardsService!: CardsService;
 
   private toModel(input: CreateCardControllerInput): Card {
-    return plainToInstance(Card, input);
+    return plainToInstance(Card, input, { excludeExtraneousValues: true });
   }
+
   protected handle: RequestHandler = async (req, res) => {
     const requestBody: CreateCardControllerInput = req.body;
 

@@ -1,17 +1,13 @@
 import { Service } from 'typedi';
 import { verify } from 'jsonwebtoken';
-
-interface ValidateTokenServiceInput {
-  path: string;
-  idToken?: string;
-}
+import { AuthData } from '../models/AuthData';
 
 const PUBLIC_ROUTES = ['/login'];
 
 @Service()
 export class ValidateTokenService {
-  public validate(input: ValidateTokenServiceInput) {
-    if (PUBLIC_ROUTES.includes(input.path)) {
+  public validate(input: AuthData) {
+    if (!input.originPath || PUBLIC_ROUTES.includes(input.originPath)) {
       return true;
     }
 

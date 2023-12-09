@@ -1,30 +1,27 @@
 import { Service } from 'typedi';
 import { sign } from 'jsonwebtoken';
-
-interface LoginServiceInput {
-  username: string;
-  password: string;
-}
+import { InvalidAuthenticationError } from '../errors/InvalidAuthenticationError';
+import { AuthData } from '../models/AuthData';
+import { plainToInstance } from 'class-transformer';
 
 @Service()
 export class LoginService {
-  public login(input: LoginServiceInput) {
+  public login(input: AuthData) {
     const adminUser = {
       username: process.env.ADMIN_USERNAME,
       password: process.env.ADMIN_PASSWORD,
     };
 
     if (
-      adminUser.username !== input.username ||
-      adminUser.password !== input.password
+      adminUser.username !== input.login ||
+      adminUser.password !== input.senha
     ) {
-      throw new Error('Unknown user');
+      throw new InvalidAuthenticationError();
     }
 
     const idToken = sign(
       {
-        username: input.username,
-        password: input.password,
+        username: input.login,
       },
       process.env.JWT_SECRET!,
       {
@@ -33,6 +30,6 @@ export class LoginService {
       }
     );
 
-    return { idToken };
+    return plainToInstance(AuthData, { idToken });
   }
 }
