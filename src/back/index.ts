@@ -1,23 +1,14 @@
 import 'reflect-metadata';
-import dotenv from 'dotenv';
-import express from 'express';
-import { AddressInfo } from 'net';
-import { authRouter } from './api/controllers/auth/router';
 import { setupContainer } from './container';
-import validateTokenMiddleware from './api/middleware/auth/ValidateTokenMiddleware';
+import dotenv from 'dotenv';
 import { sequelize } from './data/config';
+import { AddressInfo } from 'net';
 
 dotenv.config();
 
 setupContainer();
 
-const server = express();
-
-server.use(express.json());
-
-server.use(validateTokenMiddleware.handle);
-
-server.use('/', authRouter);
+import { server } from './server';
 
 Promise.all([sequelize.sync()]).then(() => {
   const listener = server.listen(process.env.PORT, () => {

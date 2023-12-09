@@ -1,7 +1,9 @@
 import Container from 'typedi';
+import { CardsDatasource } from './data/datasources/CardsDatasource';
+import { CardsRespository } from './data/repositories/CardsRespository';
 
-const container = Container.of();
+export const setupContainer = () => {
+  Container.set(CardsDatasource, Container.get(CardsRespository));
+};
 
-export const setupContainer = () => {};
-
-export const getContainer = () => container;
+export const getContainer = () => Container;

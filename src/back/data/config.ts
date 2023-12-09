@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
-import { Card } from './models/Card';
+import { CardEntity } from './entities/CardEntity';
 
 export const sequelize = new Sequelize({
   database: 'some_db',
@@ -7,5 +7,5 @@ export const sequelize = new Sequelize({
   username: 'root',
   password: '',
   storage: ':memory:',
-  models: [Card],
+  models: [CardEntity],
 });
