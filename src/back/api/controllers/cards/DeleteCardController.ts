@@ -11,7 +11,7 @@ class DeleteCardController extends BaseController {
   private cardsService!: CardsService;
 
   protected handle: RequestHandler = async (req, res) => {
-    const cards = await this.cardsService.deleteCard(req.params['id']);
+    const cards = await this.cardsService.deleteCard(req.params?.id);
 
     res.status(StatusCode.OK).send(cards);
   };

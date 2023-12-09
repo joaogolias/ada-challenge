@@ -9,10 +9,10 @@ export class CardsService {
   @Inject(CardsDatasource)
   private cardDatasource!: CardsDatasource;
 
-  public async createCard(input: Card) {
-    validateRequiredCardsProperties(input);
+  public async createCard(newCard: Card) {
+    validateRequiredCardsProperties(newCard);
 
-    const card = await this.cardDatasource.create(input);
+    const card = await this.cardDatasource.create(newCard);
 
     return card;
   }
@@ -31,5 +31,17 @@ export class CardsService {
     await this.cardDatasource.delete(card.id!);
 
     return this.listCards();
+  }
+
+  public async updateCard(newCard: Card) {
+    validateRequiredCardsProperties(newCard);
+
+    const card = await this.cardDatasource.findById(newCard.id!);
+
+    if (!card) {
+      throw new NotFoundError();
+    }
+
+    return this.cardDatasource.update(newCard);
   }
 }
