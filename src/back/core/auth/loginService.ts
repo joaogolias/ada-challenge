@@ -1,13 +1,13 @@
-import { Service } from "typedi"
+import { Service } from 'typedi';
 
 interface LoginServiceInput {
-    login: string
-    senha: string
+  login: string;
+  senha: string;
 }
 
 @Service()
 export class LoginService {
-    public login(input: LoginServiceInput) {
-        return input.login + " " + input.senha
-    }
+  public login(input: LoginServiceInput) {
+    return input.login + ' ' + input.senha;
+  }
 }

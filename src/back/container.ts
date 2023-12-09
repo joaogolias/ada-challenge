@@ -1,9 +1,7 @@
-import Container from "typedi"
+import Container from 'typedi';
 
-const container = Container.of()
+const container = Container.of();
 
-export const setupContainer = () => {
-    
-}
+export const setupContainer = () => {};
 
-export const getContainer = () => container
+export const getContainer = () => container;
