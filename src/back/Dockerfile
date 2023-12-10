@@ -6,4 +6,6 @@ COPY / ./back
 EXPOSE 5000
 
 WORKDIR ./back
+RUN yarn install
+
 CMD ["npm", "run", "start"]
