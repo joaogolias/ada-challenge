@@ -16,8 +16,9 @@ export const useDeleteCard = (
             (item) => item.id === card.id
           );
           if (foundCardIndex !== undefined && foundCardIndex !== -1) {
-            previousCards.splice(foundCardIndex, 1);
-            setCards(previousCards);
+            const previousCardsCopy = [...previousCards];
+            previousCardsCopy.splice(foundCardIndex, 1);
+            setCards(previousCardsCopy);
             setCard?.(undefined);
           }
         }

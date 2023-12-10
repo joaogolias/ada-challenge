@@ -9,25 +9,31 @@ import { useUpdateCard } from '@/hooks/useUpdateCard';
 
 interface Props {
   type: CardListOptions;
-  cards: CardModel[];
+  allCards: CardModel[];
+  currentCards: CardModel[];
   setCards: Dispatch<SetStateAction<CardModel[]>>;
   shouldShowAddButton?: boolean;
+  nextList?: CardListOptions;
+  previousList?: CardListOptions;
 }
 
 export const CardList: React.FC<Props> = ({
   type,
-  cards,
+  allCards,
+  currentCards,
   setCards,
   shouldShowAddButton,
+  nextList,
+  previousList,
 }) => {
   const [isCreateCardModeOn, setIsCreateCardModeOn] = useState(false);
   const [cardToCreate, setCardToCreate] = useState<CardModel | undefined>();
   const [cardToDelete, setCardToDelete] = useState<CardModel | undefined>();
   const [cardToUpdate, setCardToUpdate] = useState<CardModel | undefined>();
 
-  useCreateCard(cards, setCards, cardToCreate);
-  useDeleteCard(cards, setCards, cardToDelete, setCardToDelete);
-  useUpdateCard(cards, setCards, cardToUpdate);
+  useCreateCard(allCards, setCards, cardToCreate);
+  useDeleteCard(allCards, setCards, cardToDelete, setCardToDelete);
+  useUpdateCard(allCards, setCards, cardToUpdate);
 
   const turnCreateCardModeOn = () => {
     setIsCreateCardModeOn(true);
@@ -61,12 +67,14 @@ export const CardList: React.FC<Props> = ({
           onClose={turnCreateCardModeOff}
         />
       )}
-      {cards.map((card) => (
+      {currentCards.map((card) => (
         <div key={card.id} className="mb-2">
           <CardContainer
             setCardToDelete={setCardToDelete}
             setCardToUpdate={setCardToUpdate}
             card={card}
+            nextList={nextList}
+            previousList={previousList}
           />
         </div>
       ))}

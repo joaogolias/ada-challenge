@@ -12,19 +12,26 @@ export const CardsListsContainer: React.FC = () => {
     <div className="flex w-full px-4 h-full">
       <CardList
         type={CardListOptions.TODO}
-        cards={groupedCards.TODO}
+        currentCards={groupedCards.TODO}
+        allCards={cards}
         setCards={setCards}
         shouldShowAddButton
+        nextList={CardListOptions.DOING}
       />
       <CardList
         type={CardListOptions.DOING}
-        cards={groupedCards.DOING}
+        currentCards={groupedCards.DOING}
+        allCards={cards}
         setCards={setCards}
+        nextList={CardListOptions.DONE}
+        previousList={CardListOptions.TODO}
       />
       <CardList
         type={CardListOptions.DONE}
-        cards={groupedCards.DONE}
+        currentCards={groupedCards.DONE}
+        allCards={cards}
         setCards={setCards}
+        previousList={CardListOptions.DOING}
       />
     </div>
   );

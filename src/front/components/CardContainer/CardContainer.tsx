@@ -3,12 +3,14 @@
 import { useState } from 'react';
 import { ReadModeCardContainer } from './ReadModeCardContainer';
 import { EditModeCardContainer } from './EditModeCardContainer';
-import { CardModel } from '@/models/CardModel';
+import { CardListOptions, CardModel } from '@/models/CardModel';
 
 interface Props {
   card: CardModel;
   setCardToDelete: (card: CardModel) => void;
   setCardToUpdate: (card: CardModel) => void;
+  nextList?: CardListOptions;
+  previousList?: CardListOptions;
 }
 
 enum CardContainerMode {
@@ -21,6 +23,8 @@ export const CardContainer: React.FC<Props> = ({
   card,
   setCardToDelete,
   setCardToUpdate,
+  nextList,
+  previousList,
 }) => {
   const [mode, setMode] = useState<CardContainerMode>(CardContainerMode.READ);
 
@@ -42,6 +46,9 @@ export const CardContainer: React.FC<Props> = ({
           card={card}
           onEditClick={setEditMode}
           onDeleteClick={onDeleteCard}
+          onChangeList={onUpdateCard}
+          nextList={nextList}
+          previousList={previousList}
         />
       )}
       {mode === CardContainerMode.EDIT && (
