@@ -12,7 +12,7 @@ describe('Tests for LoginService class', () => {
   process.env.ADMIN_USERNAME = 'ADMIN_USERNAME';
   process.env.ADMIN_PASSWORD = 'ADMIN_PASSWORD';
   process.env.JWT_AUDIENCE = 'JWT_AUDIENCE';
-  process.env.JWT_TOKEN_EXPIRATION = 'JWT_TOKEN_EXPIRATION';
+  process.env.JWT_TOKEN_EXPIRATION = '30s';
   process.env.JWT_SECRET = 'JWT_SECRET';
 
   it('should throw InvalidAuthenticationError if input is incomplete', () => {
