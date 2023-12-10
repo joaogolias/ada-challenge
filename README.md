@@ -6,7 +6,7 @@ Este é o [Desafio Técnico Fullstack](https://gitlab.com/gabriel.militello1/des
 A entrega final desse projeto consiste em:
 
 1. Um [repositório público](https://github.com/joaogolias/ada-challenge) do github
-2. Um [vídeo]() com uma demonstração do projeto funcionado 
+2. Um [vídeo](https://youtu.be/BwAgiM1u2Wk) com uma demonstração do projeto funcionado 
 
 ## Estrutura
 Todo o código principal do projeto encontra-se na pasta `src`, dividida em:
