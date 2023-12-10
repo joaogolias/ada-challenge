@@ -3,9 +3,9 @@ WORKDIR /
 
 COPY / ./front
 
-EXPOSE 3000
-
 WORKDIR ./front
-RUN yarn install && yarn build
+RUN yarn ci && yarn build
+
+EXPOSE 3000
 
 CMD ["yarn", "start"]

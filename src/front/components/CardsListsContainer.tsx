@@ -1,44 +1,13 @@
 import { CardListOptions, CardModel } from '@/models/CardModel';
 import { CardContainer } from './CardContainer';
 import { Typography } from '@mui/material';
+import { useCards } from '@/hooks/useCards';
+import { useGroupCards } from '@/hooks/useGroupCards';
 
 export const CardsListsContainer: React.FC = () => {
-  const cards: CardModel[] = [
-    {
-      id: '1',
-      titulo: 'Titulo 1',
-      conteudo: 'Conteudo 1',
-      lista: CardListOptions.TODO,
-    },
-    {
-      id: '2',
-      titulo: 'Titulo 2',
-      conteudo: 'Conteudo 2',
-      lista: CardListOptions.DOING,
-    },
-    {
-      id: '3',
-      titulo: 'Titulo 3',
-      conteudo: 'Conteudo 3',
-      lista: CardListOptions.DONE,
-    },
-  ];
+  const { cards } = useCards();
 
-  const groupCards = (cards: CardModel[]) => {
-    return cards.reduce(
-      (acc, curr) => {
-        if (acc[curr.lista]) {
-          acc[curr.lista].push(curr);
-        } else {
-          acc[curr.lista] = [curr];
-        }
-        return acc;
-      },
-      {} as Record<CardListOptions, CardModel[]>
-    );
-  };
-
-  const groupedCards = groupCards(cards);
+  const { groupedCards } = useGroupCards(cards);
 
   const renderCardList = (type: CardListOptions, cards: CardModel[]) => {
     return (
