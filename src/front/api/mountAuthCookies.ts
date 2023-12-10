@@ -3,7 +3,7 @@ import { fetchLogin } from '../api/fetch/fetchLogin';
 
 const AUTH_COOKIE_KEY = 'AUTH_TOKEN';
 
-export const mountAuthCookies = async () => {
+export const mountAuthCookies = async (): Promise<string> => {
   const authCookie = getCookie(AUTH_COOKIE_KEY);
 
   if (authCookie) {

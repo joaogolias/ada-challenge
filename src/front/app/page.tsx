@@ -1,7 +1,7 @@
 'use client';
 
-import { Header } from '@/components/Header';
-import { CardsListsContainer } from '@/components/CardsListsContainer';
+import { CardsListsContainer } from '@/components/CardsLists/CardsListsContainer';
+import { Header } from '@/components/Header/Header';
 
 export default function Home() {
   return (
