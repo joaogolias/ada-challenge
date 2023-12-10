@@ -1,9 +1,16 @@
 version: '2'
 
 services:
-  server:
+  back:
     build:
       context: src/back
     ports:
       - '5000:5000'
     image: ada-challenge-back
+  
+  front:
+    build:
+      context: src/front
+    ports:
+      - '3000:3000'
+    image: ada-challenge-front
