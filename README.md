@@ -58,5 +58,6 @@ JWT_SECRET=<SECRET VALUE>
 
 A partir do *root* do projeto, rode:
 ```sh
+docker compose build --no-cache
 docker compose up
 ```
