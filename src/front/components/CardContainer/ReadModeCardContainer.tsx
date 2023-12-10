@@ -108,7 +108,7 @@ export const ReadModeCardContainer: React.FC<Props> = ({
       </div>
 
       <div className="flex p-[14px]">
-        <p dangerouslySetInnerHTML={parseMarkdown(marked(card.conteudo))} />
+        <div dangerouslySetInnerHTML={parseMarkdown(marked(card.conteudo))} />
       </div>
 
       <div className="grid grid-cols-2 w-full">
