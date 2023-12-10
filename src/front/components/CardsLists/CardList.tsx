@@ -4,6 +4,7 @@ import { CardContainer } from '../CardContainer/CardContainer';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { EditModeCardContainer } from '../CardContainer/EditModeCardContainer';
 import { useCreateCard } from '@/hooks/useCreateCard';
+import { useDeleteCard } from '@/hooks/useDeleteCard';
 
 interface Props {
   type: CardListOptions;
@@ -20,8 +21,10 @@ export const CardList: React.FC<Props> = ({
 }) => {
   const [isCreateCardModeOn, setIsCreateCardModeOn] = useState(false);
   const [newCard, setCard] = useState<CardModel | undefined>();
+  const [cardToDelete, setCardToDelete] = useState<CardModel | undefined>();
 
   useCreateCard(cards, setCards, newCard);
+  useDeleteCard(cards, setCards, cardToDelete, setCardToDelete);
 
   const turnCreateCardModeOn = () => {
     setIsCreateCardModeOn(true);
@@ -57,7 +60,7 @@ export const CardList: React.FC<Props> = ({
       )}
       {cards.map((card) => (
         <div key={card.id} className="mb-2">
-          <CardContainer card={card} />
+          <CardContainer setCardToDelete={setCardToDelete} card={card} />
         </div>
       ))}
     </div>

@@ -31,7 +31,6 @@ class LoginController extends BaseController {
 
       res.status(StatusCode.OK).send(loginResult);
     } catch (err) {
-      console.log(err);
       res.sendStatus(StatusCode.UNAUTHORIZED);
     }
   };

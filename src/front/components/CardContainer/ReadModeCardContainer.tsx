@@ -10,11 +10,13 @@ import { CardModel } from '@/models/CardModel';
 interface Props {
   card: CardModel;
   onEditClick: () => void;
+  onDeleteClick: () => void;
 }
 
 export const ReadModeCardContainer: React.FC<Props> = ({
   card,
   onEditClick,
+  onDeleteClick,
 }) => {
   const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
   const isMenuOpen = Boolean(menuAnchor);
@@ -28,7 +30,12 @@ export const ReadModeCardContainer: React.FC<Props> = ({
   };
 
   const onMenuEditOptionClick = () => {
-    onEditClick?.();
+    onEditClick();
+    handleMenuClose();
+  };
+
+  const onMenuDeleteOptionClick = () => {
+    onDeleteClick();
     handleMenuClose();
   };
 
@@ -63,7 +70,7 @@ export const ReadModeCardContainer: React.FC<Props> = ({
             <Typography className="ml-2"> Editar </Typography>
           </MenuItem>
 
-          <MenuItem onClick={handleMenuClose}>
+          <MenuItem onClick={onMenuDeleteOptionClick}>
             <div className="text-red-400">
               <DeleteIcon />
               <Typography className="ml-2"> Deletar </Typography>

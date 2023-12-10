@@ -40,7 +40,6 @@ class ValidateTokenMiddleware {
         res.sendStatus(StatusCode.UNAUTHORIZED);
       }
     } catch (err) {
-      console.log(err);
       res.sendStatus(StatusCode.UNAUTHORIZED);
     }
   };
