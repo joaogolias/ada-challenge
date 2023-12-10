@@ -5,7 +5,7 @@ Este é o [Desafio Técnico Fullstack](https://gitlab.com/gabriel.militello1/des
 ## Entrega Final
 A entrega final desse projeto consiste em:
 
-1. Um [repositório público]() do github
+1. Um [repositório público](https://github.com/joaogolias/ada-challenge) do github
 2. Um [vídeo]() com uma demonstração do projeto funcionado 
 
 ## Estrutura
@@ -19,7 +19,7 @@ Esta é a pasta do projeto do backend, feito com:
 - `sqlite`
 - `sequilize`
 
-Você pode encontrar uma documentação mais detalhada do Frontend no seu arquivo [README.md]()
+Você pode encontrar uma documentação mais detalhada do Frontend no seu arquivo [README.md](https://github.com/joaogolias/ada-challenge/blob/main/src/back/README.md)
 
 **2. Diretório `src/front`**  
 
@@ -30,7 +30,7 @@ Esta é a pasta do projeto do backend, feito com:
 - `tailwind`
 - `mui`
 
-Você pode encontrar uma documentação mais detalhada do Frontend no seu arquivo [README.md]()
+Você pode encontrar uma documentação mais detalhada do Frontend no seu arquivo [README.md](https://github.com/joaogolias/ada-challenge/blob/main/src/front/README.md)
 
 **3. Demais arquivos**
 
