@@ -58,7 +58,7 @@ export const EditModeCardContainer: React.FC<Props> = ({
         </IconButton>
       </div>
 
-      <div className="flex">
+      <div className="flex mb-2">
         <TextField
           id="outlined-multiline-flexible"
           label="Conteúdo"
@@ -71,7 +71,6 @@ export const EditModeCardContainer: React.FC<Props> = ({
       <Button
         onClick={saveCard}
         variant="outlined"
-        className="mt-2"
         disabled={!isSaveButtonEnabled}
       >
         {' '}

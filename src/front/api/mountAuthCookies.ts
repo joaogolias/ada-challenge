@@ -14,7 +14,7 @@ export const mountAuthCookies = async (): Promise<string> => {
   setCookie(AUTH_COOKIE_KEY, idToken, {
     path: '/',
     domain: 'localhost',
-    maxAge: 10 * 60,
+    maxAge: 25 * 60,
   });
   return idToken;
 };
