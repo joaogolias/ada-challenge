@@ -8,6 +8,7 @@ import { CardModel } from '@/models/CardModel';
 interface Props {
   card: CardModel;
   setCardToDelete: (card: CardModel) => void;
+  setCardToUpdate: (card: CardModel) => void;
 }
 
 enum CardContainerMode {
@@ -16,7 +17,11 @@ enum CardContainerMode {
   EDIT = 'EDIT',
 }
 
-export const CardContainer: React.FC<Props> = ({ card, setCardToDelete }) => {
+export const CardContainer: React.FC<Props> = ({
+  card,
+  setCardToDelete,
+  setCardToUpdate,
+}) => {
   const [mode, setMode] = useState<CardContainerMode>(CardContainerMode.READ);
 
   const setEditMode = () => setMode(CardContainerMode.EDIT);
@@ -24,6 +29,10 @@ export const CardContainer: React.FC<Props> = ({ card, setCardToDelete }) => {
 
   const onDeleteCard = () => {
     setCardToDelete(card);
+  };
+
+  const onUpdateCard = (updatedCard: CardModel) => {
+    setCardToUpdate(updatedCard);
   };
 
   return (
@@ -36,7 +45,11 @@ export const CardContainer: React.FC<Props> = ({ card, setCardToDelete }) => {
         />
       )}
       {mode === CardContainerMode.EDIT && (
-        <EditModeCardContainer card={card} onClose={setReadMode} />
+        <EditModeCardContainer
+          card={card}
+          onClose={setReadMode}
+          onSave={onUpdateCard}
+        />
       )}
     </>
   );
