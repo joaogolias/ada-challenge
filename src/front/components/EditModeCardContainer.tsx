@@ -1,6 +1,6 @@
 'use client';
 
-import { Card, IconButton, TextField } from '@mui/material';
+import { Card, IconButton, Button, TextField } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { CardModel } from '@/models/CardModel';
 
@@ -33,6 +33,10 @@ export const EditModeCardContainer: React.FC<Props> = ({ card, onClose }) => {
           defaultValue={card.conteudo}
         />
       </div>
+      <Button onClick={onClose} variant="outlined" className="mt-2">
+        {' '}
+        Salvar{' '}
+      </Button>
     </Card>
   );
 };

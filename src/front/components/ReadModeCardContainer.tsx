@@ -63,9 +63,11 @@ export const ReadModeCardContainer: React.FC<Props> = ({
             <Typography className="ml-2"> Editar </Typography>
           </MenuItem>
 
-          <MenuItem onClick={handleMenuClose} className="text-red-400">
-            <DeleteIcon />
-            <Typography className="ml-2"> Deletar </Typography>
+          <MenuItem onClick={handleMenuClose}>
+            <div className="text-red-400">
+              <DeleteIcon />
+              <Typography className="ml-2"> Deletar </Typography>
+            </div>
           </MenuItem>
         </Menu>
       </div>

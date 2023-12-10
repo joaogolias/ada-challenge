@@ -5,20 +5,17 @@ import { ReadModeCardContainer } from './ReadModeCardContainer';
 import { EditModeCardContainer } from './EditModeCardContainer';
 import { CardModel } from '@/models/CardModel';
 
+interface Props {
+  card: CardModel;
+}
+
 enum CardContainerMode {
   CREATE = 'CREATE',
   READ = 'READ',
   EDIT = 'EDIT',
 }
 
-export const CardContainer: React.FC = () => {
-  const card: CardModel = {
-    id: '',
-    titulo: 'Titulo 1',
-    conteudo: 'Conteudo 1',
-    lista: 'todo',
-  };
-
+export const CardContainer: React.FC<Props> = ({ card }) => {
   const [mode, setMode] = useState<CardContainerMode>(CardContainerMode.READ);
 
   const setEditMode = () => setMode(CardContainerMode.EDIT);

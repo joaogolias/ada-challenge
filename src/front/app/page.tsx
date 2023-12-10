@@ -1,13 +1,13 @@
 'use client';
 
 import { Header } from '@/components/Header';
-import { CardContainer } from '../components/CardContainer';
+import { CardsListsContainer } from '@/components/CardsListsContainer';
 
 export default function Home() {
   return (
-    <div>
+    <div className="h-full">
       <Header />
-      <CardContainer />
+      <CardsListsContainer />
     </div>
   );
 }
