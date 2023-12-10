@@ -11,23 +11,34 @@ interface Props {
   onClose: () => void;
 }
 
+const isCardValid = (card: CardModel) => Boolean(card.titulo && card.conteudo);
+
 export const EditModeCardContainer: React.FC<Props> = ({
   card,
   onSave,
   onClose,
 }) => {
-  const [newCard, setNewCard] = useState<CardModel>(card || new CardModel());
+  const [cardToSave, setCardToSave] = useState<CardModel>(
+    card || new CardModel()
+  );
+  const [isSaveButtonEnabled, setIsSaveButtonEnabled] = useState(
+    isCardValid(cardToSave)
+  );
 
   const updateContent = (content: string) => {
-    setNewCard({ ...newCard, conteudo: content });
+    const updatedCard = { ...cardToSave, conteudo: content };
+    setCardToSave(updatedCard);
+    setIsSaveButtonEnabled(isCardValid(updatedCard));
   };
 
   const updateTitle = (title: string) => {
-    setNewCard({ ...newCard, titulo: title });
+    const updatedCard = { ...cardToSave, titulo: title };
+    setCardToSave(updatedCard);
+    setIsSaveButtonEnabled(isCardValid(updatedCard));
   };
 
   const saveCard = () => {
-    onSave?.(newCard);
+    onSave?.(cardToSave);
     onClose();
   };
 
@@ -39,7 +50,7 @@ export const EditModeCardContainer: React.FC<Props> = ({
           label="Título"
           multiline
           maxRows={2}
-          onChange={(e) => e.target?.value && updateTitle(e.target.value)}
+          onChange={(e) => e.target && updateTitle(e.target.value)}
           defaultValue={card?.titulo}
         />
         <IconButton onClick={onClose} size="small" sx={{ ml: 2 }}>
@@ -53,11 +64,16 @@ export const EditModeCardContainer: React.FC<Props> = ({
           label="Conteúdo"
           multiline
           maxRows={4}
-          onChange={(e) => e.target?.value && updateContent(e.target.value)}
+          onChange={(e) => e.target && updateContent(e.target.value)}
           defaultValue={card?.conteudo}
         />
       </div>
-      <Button onClick={saveCard} variant="outlined" className="mt-2">
+      <Button
+        onClick={saveCard}
+        variant="outlined"
+        className="mt-2"
+        disabled={!isSaveButtonEnabled}
+      >
         {' '}
         Salvar{' '}
       </Button>

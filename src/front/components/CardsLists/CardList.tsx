@@ -33,7 +33,7 @@ export const CardList: React.FC<Props> = ({
 
   useCreateCard(allCards, setCards, cardToCreate);
   useDeleteCard(allCards, setCards, cardToDelete, setCardToDelete);
-  useUpdateCard(allCards, setCards, cardToUpdate);
+  useUpdateCard(allCards, setCards, cardToUpdate, setCardToUpdate);
 
   const turnCreateCardModeOn = () => {
     setIsCreateCardModeOn(true);
@@ -48,36 +48,42 @@ export const CardList: React.FC<Props> = ({
   };
 
   return (
-    <div className="w-full h-full border-r-[2px] pr-2 mr-2">
-      <Typography className="mb-4 text-center"> {type} </Typography>
-      {shouldShowAddButton && (
-        <div className="w-full flex justify-center">
-          <Button
-            variant="outlined"
-            className="mt-2"
-            onClick={turnCreateCardModeOn}
-          >
-            Adicionar card
-          </Button>
-        </div>
-      )}
-      {isCreateCardModeOn && (
-        <EditModeCardContainer
-          onSave={onCreateCard}
-          onClose={turnCreateCardModeOff}
-        />
-      )}
-      {currentCards.map((card) => (
-        <div key={card.id} className="mb-2">
-          <CardContainer
-            setCardToDelete={setCardToDelete}
-            setCardToUpdate={setCardToUpdate}
-            card={card}
-            nextList={nextList}
-            previousList={previousList}
-          />
-        </div>
-      ))}
+    <div className="w-full h-full">
+      <div className="text-center bg-cyan-200">
+        <Typography> {type} </Typography>
+      </div>
+      <div className={`p-2 h-full ${nextList && 'border-r-[2px]'} bg-gray-50`}>
+        {shouldShowAddButton && (
+          <div className="w-full flex justify-center mb-2">
+            <Button
+              variant="outlined"
+              className="mt-2"
+              onClick={turnCreateCardModeOn}
+            >
+              Adicionar card
+            </Button>
+          </div>
+        )}
+        {isCreateCardModeOn && (
+          <div className="mb-2">
+            <EditModeCardContainer
+              onSave={onCreateCard}
+              onClose={turnCreateCardModeOff}
+            />
+          </div>
+        )}
+        {currentCards.map((card) => (
+          <div key={card.id} className="mb-2">
+            <CardContainer
+              setCardToDelete={setCardToDelete}
+              setCardToUpdate={setCardToUpdate}
+              card={card}
+              nextList={nextList}
+              previousList={previousList}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

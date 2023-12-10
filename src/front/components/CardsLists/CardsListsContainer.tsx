@@ -9,7 +9,7 @@ export const CardsListsContainer: React.FC = () => {
   const { groupedCards } = useGroupCards(cards);
 
   return (
-    <div className="flex w-full px-4 h-full">
+    <div className="flex w-full h-full">
       <CardList
         type={CardListOptions.TODO}
         currentCards={groupedCards.TODO}

@@ -5,7 +5,8 @@ import { Dispatch, SetStateAction, useEffect } from 'react';
 export const useUpdateCard = (
   previousCards: CardModel[],
   setCards: Dispatch<SetStateAction<CardModel[]>>,
-  card?: CardModel
+  card?: CardModel,
+  setCard?: Dispatch<SetStateAction<CardModel | undefined>>
 ) => {
   useEffect(() => {
     if (card) {
@@ -20,6 +21,7 @@ export const useUpdateCard = (
             setCards(previousCardsCopy);
           }
         }
+        setCard?.(undefined);
       });
     }
   }, [card, setCards]);

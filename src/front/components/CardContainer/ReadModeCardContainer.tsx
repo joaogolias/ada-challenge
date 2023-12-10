@@ -8,6 +8,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import { CardListOptions, CardModel } from '@/models/CardModel';
+import DOMPurify from 'dompurify';
+import { marked } from 'marked';
 
 interface Props {
   card: CardModel;
@@ -50,7 +52,6 @@ export const ReadModeCardContainer: React.FC<Props> = ({
   const onNextListClick = () => {
     if (nextList) {
       card.lista = nextList;
-      console.log(card);
       onChangeList(card);
     }
   };
@@ -61,6 +62,10 @@ export const ReadModeCardContainer: React.FC<Props> = ({
       onChangeList(card);
     }
   };
+
+  const parseMarkdown = (dirty: any) => ({
+    __html: DOMPurify.sanitize(dirty),
+  });
 
   return (
     <Card className="p-2">
@@ -94,7 +99,7 @@ export const ReadModeCardContainer: React.FC<Props> = ({
           </MenuItem>
 
           <MenuItem onClick={onMenuDeleteOptionClick}>
-            <div className="text-red-400">
+            <div className="text-red-400 flex">
               <DeleteIcon />
               <Typography className="ml-2"> Deletar </Typography>
             </div>
@@ -102,8 +107,8 @@ export const ReadModeCardContainer: React.FC<Props> = ({
         </Menu>
       </div>
 
-      <div className="flex">
-        <Typography className=""> {card.conteudo}</Typography>
+      <div className="flex p-[14px]">
+        <p dangerouslySetInnerHTML={parseMarkdown(marked(card.conteudo))} />
       </div>
 
       <div className="grid grid-cols-2 w-full">
